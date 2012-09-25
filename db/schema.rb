@@ -11,7 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526162746) do
+ActiveRecord::Schema.define(:version => 20120526170821) do
+
+  create_table "categories", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "zip_code"
+    t.string   "lat"
+    t.string   "long"
+  end
+
+  create_table "place_lists", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "city_id"
+    t.integer  "category_id"
+  end
+
+  add_index "place_lists", ["category_id"], :name => "index_place_lists_on_category_id"
+  add_index "place_lists", ["city_id"], :name => "index_place_lists_on_city_id"
+
+  create_table "places", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "place_list_id"
+  end
+
+  add_index "places", ["place_list_id"], :name => "index_places_on_place_list_id"
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",          :limit => 40
