@@ -30,3 +30,4 @@ gem 'mysql2', '~> 0.2.17'
 #   gem 'webrat'
 # end
 gem "hobo", "= 1.3.0"
+gem "rest-client", "~> 1.6.7"
